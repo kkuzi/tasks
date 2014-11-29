@@ -1,0 +1,39 @@
+<h1>Listing tasks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Priority</th>
+      <th>Deadline</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr class="prio-<%= task.priority %>">
+        <td><%= task.name %></td>
+        <td><%= task.priority %></td>
+        <td><%= task.deadline.strftime("%d.%m.%Y %H:%M") %></td>
+        <td><%= link_to 'Show', task %></td>
+        <td><%= link_to 'Edit', edit_task_path(task) %></td>
+        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+
+    <% end %>
+  </tbody>
+</table>
+<B><%= link_to "priorita 1", tasks_path("priority"=>1)%>
+<%= link_to "priorita 2", tasks_path("priority"=>2)%>
+<%= link_to "priorita 3", tasks_path("priority"=>3)%>
+<%= link_to "priorita 4", tasks_path("priority"=>4)%>
+<%= link_to "priorita 5", tasks_path("priority"=>5)%>
+<%= link_to "vsechno", tasks_path%></B>
+<br>
+<%= link_to(image_tag("scuba.png", height: "160"),"http://www.google.cz")  %>
+<br>
+
+<%= link_to 'New Task', new_task_path %>
